@@ -16,7 +16,6 @@
         <div class="form-group">
             <label for="berufsgruppe">Berufsgruppe</label><br>
             <select id="berufsgruppe" class="form-control">
-                <option>Bitte auswählen...</option>
             </select><br>
             <br><label for="klassenauswahl">Klassenauswahl</label><br>
             <select id="klassenauswahl" class="form-control">
@@ -44,26 +43,10 @@
     </nav>
     <div id="output"></div>
     <h4 id="noResult">Für diese Woche wurden leider keine Ergebnisse gefunden</h4>
-<!--    <div class="squares">-->
-<!---->
-<!--        <div class="square4 square6">-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--            <span></span>-->
-<!--        </div>-->
-<!--    </div>-->
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="main.js"></script>
-
-    <!--    <script src="timetable.js"></script>-->
 </div>
 </body>
 </html>

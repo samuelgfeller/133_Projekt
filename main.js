@@ -1,17 +1,20 @@
-
-// @todo muss man auch die Kopierten Funktionen verstehen?
 // Warten bis alles geladen wurde
 $(document).ready(function () {
     $.ajax({
         url: "http://sandbox.gibm.ch/berufe.php",
         async: false
     }).done(function (data) {
+        // Standardauswahl setzten und nicht auswählbar machen
+        $('#berufsgruppe').append('<option disabled selected>Bitte auswählen...</option>');
+        // Klassenauswahl nicht auswählbar machen
+        $('#klassenauswahl').prop('disabled', 'disabled');
+
         // Über alle Resultate gehen
         $.each(data, function (key, value) {
             // Erstes Dropdown füllen
             $('#berufsgruppe').append('<option value=' + value.beruf_id + '>' + value.beruf_name + '</option>');
         }); // end each
-    // Schlägt der AJAX-Rquest fehl?
+        // Schlägt der AJAX-Rquest fehl?
     }).fail(function (jqXHR, textStatus, errorThrown) {
         // Display the error on the screen
         alert('Fehler bei Berufsgruppe: ' + jqXHR.responseText + ', ' + textStatus);
@@ -26,7 +29,7 @@ $(document).ready(function () {
         // Variable Gruppe erstellen und Füllen mit dem ausgewähltem Beruf
         var beruf = $('#berufsgruppe option:selected').val();
         // Ausgewählte Berufsgruppe in ein Cookie schreiben
-        setcookie('beruf',beruf);
+        setcookie('beruf', beruf);
         // Klassenauswahlcookie löschen
         document.cookie = "klasse=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         // Element färben
@@ -37,18 +40,25 @@ $(document).ready(function () {
 
     // Klickevents abfangen in der Pagination
     $("[aria-label=Previous]").click(function () {
-        $('#tableContent').fadeOut(500, function(){
-            $(this).remove();
+        // Stundenplan langsam ausblenden
+        $('#output table').fadeOut(500, function () {
             // Stundenplan generieren mit vorheriger Woche
             generateTafel(getPreviousNextWeekYear('previous'));
         });
     });
     $("[aria-label=Next]").click(function () {
-        // Stundenplan generieren mit nächsten Woche
-        generateTafel(getPreviousNextWeekYear('next'));
+        // Stundenplan langsam ausblenden
+        $('#output table').fadeOut(500, function () {
+            // Stundenplan generieren mit nächsten Woche
+            generateTafel(getPreviousNextWeekYear('next'));
+        });
+
     });
 
     function setKlassenauswahl(gruppe) {
+        // Klassenauswahl auswählbar machen
+        $('#klassenauswahl').prop('disabled', false);
+
         // Zweites Dropdown in variable klassenauswahl setzen
         var klassenauswahl = $('#klassenauswahl');
         // Dropdown und output leeren falls noch Daten vorhanden wären
@@ -57,7 +67,7 @@ $(document).ready(function () {
         // Pagination verstecken
         $('#paginationNav').hide();
         // Auswahl auffordern
-        klassenauswahl.append('<option value="">Bitte auswählen...</option>');
+        klassenauswahl.append('<option disabled selected>Bitte auswählen...</option>');
         // API ansprechen mit dem Parameter
         $.ajax({
             url: 'http://sandbox.gibm.ch/klassen.php?beruf_id=' + gruppe,
@@ -93,7 +103,7 @@ $(document).ready(function () {
      * Returns a next or previous week in this format: ww-yyyy
      * @param plusMinus expected string 'next' or 'previous'
      */
-    function getPreviousNextWeekYear(plusMinus){
+    function getPreviousNextWeekYear(plusMinus) {
         // Wert der Pagination nehmen und zwei Teile daraus machen mit Woche und Jahr
         var weekYear = $('#weekYear').text().split('-');
         // Variable Woche und Jahr setzten mit den vorher herausgefundenen Werten
@@ -154,6 +164,7 @@ $(document).ready(function () {
             if (!$.isEmptyObject(plan)) {
 
                 $('.glyphicon').hide();
+
                 // Über jedes Resultat / Stundenplan gehen
                 $.each(plan, function (key, value) {
                     // Körper der Tebelle erstellen und mit werten füllen
@@ -168,8 +179,9 @@ $(document).ready(function () {
                         '</tr>').appendTo($('#output table'));
                 }); // End each
                 // Close tbody
-               $('#tableContent').addClass('table').append('</tbody>').addClass('tableContentAnimation');
-               // $('#tableContent').fadeIn(500);
+                $('#tableContent').addClass('table').append('</tbody>').addClass('tableContentAnimation');
+                $('#tableContent').fadeIn(500);
+
 
                 // Prüfen ob JSON leer ist
             } else {
@@ -246,7 +258,6 @@ $(document).ready(function () {
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-
         if (month.length < 2) month = '0' + month;
         if (day.length < 2) day = '0' + day;
 
@@ -261,12 +272,13 @@ $(document).ready(function () {
      * @param cookieName
      * @param cookieValue
      */
-    function setcookie(cookieName,cookieValue) {
+    function setcookie(cookieName, cookieValue) {
         var today = new Date();
         var expire = new Date();
-        expire.setTime(today.getTime() + 3600000*24*14);
-        document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString();
+        expire.setTime(today.getTime() + 3600000 * 24 * 14);
+        document.cookie = cookieName + "=" + escape(cookieValue) + ";expires=" + expire.toGMTString();
     }
+
     /**
      * Funktion welche die Cookies wiedergibt
      * Der Code stammt von w3schools: https://www.w3schools.com/js/js_cookies.asp
