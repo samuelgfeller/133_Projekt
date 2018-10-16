@@ -1,0 +1,230 @@
+#noResult, #paginationNav {
+    display: none;
+}
+
+.form-group {
+    width: 50%;
+}
+
+.form-control {
+    min-width: 100%;
+}
+
+label {
+    font-size: 140%;
+}
+
+
+#tableContent{
+    /*display: none;*/
+}
+.tableContentAnimation{
+    height:50px;
+
+}
+.glyphicon{
+    text-align: center;
+    width:100%;
+}
+.glyphicon-animate {
+    animation: spin .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+
+
+
+
+
+
+
+
+
+/*Loader*/
+.squares {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+.square4 span {
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #cccc00;
+}
+
+.square4 span:nth-child(1) {
+    animation: s4animation1 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(2) {
+    animation: s4animation2 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(3) {
+    animation: s4animation3 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(4) {
+    animation: s4animation4 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(5) {
+    animation: s4animation5 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(6) {
+    animation: s4animation6 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(7) {
+    animation: s4animation7 2.5s ease-in-out infinite;
+}
+
+.square4 span:nth-child(8) {
+    animation: s4animation8 2.5s ease-in-out infinite;
+}
+
+.square6 span {
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #660066;
+}
+
+.square6 span:nth-child(1) {
+    animation: s6animation1 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(2) {
+    animation: s6animation2 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(3) {
+    animation: s6animation3 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(4) {
+    animation: s6animation4 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(5) {
+    animation: s6animation5 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(6) {
+    animation: s6animation6 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(7) {
+    animation: s6animation7 2.5s ease-in-out infinite;
+}
+
+.square6 span:nth-child(8) {
+    animation: s6animation8 2.5s ease-in-out infinite;
+}
+
+@keyframes s6animation1 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(20px, -20px, 0);
+    }
+    80% {
+        transform: translate3d(20px, 20px, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation2 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(-20px, 20px, 0);
+    }
+    80% {
+        transform: translate3d(-20px, -20px, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation3 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(20px, 20px, 0);
+    }
+    80% {
+        transform: translate3d(-20px, 20px, 0) rotate(90deg);
+    }
+
+}
+
+@keyframes s6animation4 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(-20px, -20px, 0);
+    }
+    80% {
+        transform: translate3d(20px, -20px, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation5 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(0, -25px, 0);
+    }
+    80% {
+        transform: translate3d(25px, 0, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation6 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(25px, 0, 0);
+    }
+    80% {
+        transform: translate3d(0, 25px, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation7 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(0, 25px, 0);
+    }
+    80% {
+        transform: translate3d(-25px, 0, 0) rotate(90deg);
+    }
+}
+
+@keyframes s6animation8 {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    30%, 40% {
+        transform: translate3d(-25px, 0, 0);
+    }
+    80% {
+        transform: translate3d(0, -25px, 0) rotate(90deg);
+    }
+}
