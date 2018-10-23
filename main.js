@@ -52,7 +52,6 @@ $(document).ready(function () {
             // Stundenplan generieren mit nächsten Woche
             generateTafel(getPreviousNextWeekYear('next'));
         });
-
     });
 
     function setKlassenauswahl(gruppe) {
